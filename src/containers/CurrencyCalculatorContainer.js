@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { calculateConversion } from '../actions/currencyCalculationActions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import CurrencyCalculator from './CurrencyCalculator'
+import CurrencyCalculator from '../components/CurrencyCalculator'
 
 class CurrencyCalculatorContainer extends Component {
     render() {
@@ -10,11 +10,9 @@ class CurrencyCalculatorContainer extends Component {
             this.props.dispatch(calculateConversion(input, currency))
         }
 
-        const { currentCaculatedValue } = this.props;
-
         return (
             <CurrencyCalculator
-                currentCaculatedValue={currentCaculatedValue} 
+                currentCaculatedValue={this.props.currentCaculatedValue} 
                 calculateConversion={dispatchCalculation}/>
         )
     }

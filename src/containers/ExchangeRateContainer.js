@@ -10,11 +10,10 @@ class ExchangeRateContainer extends Component {
     }
 
     render () {
-        const { baseCurrency, exchangeRates } = this.props
         return(
             <ExchangeRateTable
-                baseCurrency={baseCurrency}
-                exchangeRates={exchangeRates} />
+                baseCurrency={this.props.baseCurrency}
+                exchangeRates={this.props.exchangeRates} />
         )
     }
 }

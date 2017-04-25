@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../bootstrap.css';
-import ExchangeRateContainer from '../components/ExchangeRateContainer'
+import ExchangeRateContainer from './ExchangeRateContainer'
 import NavBar from '../components/NavBar'
-import CurrencyCalculatorContainer from '../components/CurrencyCalculatorContainer'
+import CurrencyCalculatorContainer from './CurrencyCalculatorContainer'
 
 class App extends Component {
   render() {

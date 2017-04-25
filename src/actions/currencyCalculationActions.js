@@ -11,10 +11,8 @@ export const calculateConversion = (amount, selectedCurrency) => (dispatch, getS
 
     if (typeof exchangeRates !== 'undefined') {
         var conversionRate = exchangeRates[selectedCurrency];
-        dispatch(calculate(amount, conversionRate));
+        return dispatch(calculate(amount, conversionRate));
     } else {
-        dispatch(calculate(1, 0))
+        return dispatch(calculate(0, 0))
     }
-
-    return Promise.resolve();
 }
