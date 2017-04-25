@@ -1,9 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CurrencyCalculator = ({ currentCaculatedValue, calculateConversion }) => {
+const CurrencyCalculator = ({ currentCaculatedValue, calculateConversion, exchangeRates }) => {
     let input;
     let currency;
+    
+    const nodes = typeof exchangeRates !== 'undefined' ? (
+                Object.keys(exchangeRates).map(function(keyName) {
+                    return <option value={keyName}>{keyName}</option>;
+                })
+        ) : ('');
 
     return(
         <div>
@@ -18,11 +24,14 @@ const CurrencyCalculator = ({ currentCaculatedValue, calculateConversion }) => {
                 </div>
                 <div className="form-group">
                     <label>Currency</label>
-                    <input className="form-control" type="text" ref={node => {currency = node}}/>
+                    <select className="form-control" ref={node => {currency = node}}>
+                        {nodes}
+                    </select>
                 </div>
                 <button className="btn btn-success" type="submit">Calculate</button>
             </form>
-            <span>Current Calculated Value: { currentCaculatedValue }</span>
+            <br/>
+            <span>Current Calculated Value: <strong>{ currentCaculatedValue }</strong></span>
         </div>
     )
 }

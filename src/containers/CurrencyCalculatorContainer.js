@@ -13,7 +13,8 @@ class CurrencyCalculatorContainer extends Component {
         return (
             <CurrencyCalculator
                 currentCaculatedValue={this.props.currentCaculatedValue} 
-                calculateConversion={dispatchCalculation}/>
+                calculateConversion={dispatchCalculation}
+                exchangeRates={this.props.exchangeRates}/>
         )
     }
 }
@@ -25,6 +26,7 @@ CurrencyCalculatorContainer.PropTypes = {
 const mapStateToProps = (state) => {
     return {
         currentCaculatedValue: state.currencyCalculation,
+        exchangeRates: state.rates.rates.rates
     }
 }
 
