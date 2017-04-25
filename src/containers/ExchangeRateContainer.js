@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import ExchangeRateTable from '../components/ExchangeRateTable'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchRates } from '../actions/fixerIoActions'
+import { fetchRatesIfNeeded } from '../actions/fixerIoActions'
 
 class ExchangeRateContainer extends Component {
     componentDidMount() {
-        this.props.dispatch(fetchRates());
+        this.props.dispatch(fetchRatesIfNeeded());
     }
 
     render () {

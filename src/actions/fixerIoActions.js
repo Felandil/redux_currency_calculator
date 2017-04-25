@@ -10,11 +10,21 @@ export const receiveRates = (json) => ({
     rates: json
 });
 
-export const fetchRates = () => dispatch => {
+const fetchRates = () => dispatch => {
     dispatch(requestRates());
     var result = fetch('http://api.fixer.io/latest?base=EUR')
         .then(response => response.json())
         .then(json => dispatch(receiveRates(json)))
 
     return result;
+}
+
+export const fetchRatesIfNeeded = () => (dispatch, getState) => {
+    var exchangeRates = getState().rates.rates;
+
+    if (typeof exchangeRates === 'undefined' || exchangeRates.length === 0) {
+        return dispatch(fetchRates());
+    } else {
+        return Promise.resolve();
+    }
 }
